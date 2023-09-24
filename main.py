@@ -7,6 +7,7 @@ import time
 def file_open_binary (file):
     with open(file, "rb") as key_file:
         return key_file.read()
+
 listaArquivos = []
 
 while True :
@@ -24,11 +25,11 @@ while True :
 
     if opcao == 1:
         try:
-             (pubkey, privkey) = rsa.newkeys(2048)
-             with open("public.pem", "wb") as key_file:
-                 key_file.write(pubkey.savage_pkcs1("PEM"))
-                 with open("private.pem", "wb") as key_file:
-                     key_file.write(privkey.savage_pkcs1("PEM"))
+            (pubkey, privkey) = rsa.newkeys(2048)
+            with open("public.pem", "wb") as key_file:
+                key_file.write(pubkey.save_pkcs1("PEM"))
+            with open("private.pem", "wb") as key_file:
+                key_file.write(privkey.save_pkcs1("PEM"))
         except Exception as e:
             print(f"Erro ao cadastrar a sonda e gerar o par de chaves: {e}")
 
@@ -50,7 +51,7 @@ while True :
 
     if opcao == 3:
         try:
-            now = datetime.datetime>now()
+            now = datetime.datetime.now()
             data_formatada = now.strftime("%d.%m") #formatação para dia e mês
 
             local = input("Digite local: ")
@@ -60,16 +61,17 @@ while True :
             radiGama = input ("Digite a radiação Gama: ")
             
             filename = f"{local}{data_formatada}.txt" #construindo o nome do arquivo
+
             listaArquivos.append(filename)
             print("Arquivos até agora: ", listaArquivos)
 
-            with open (filename,"w") as file:
+            with open (filename, "w") as file:
                 file.write("Data: " + data_formatada + "\n")
-                file.write("Local: " + local +"\n")
-                file.write("Temperatura: " + temperatura +"\n")
-                file.write("Radiação Alfa: " + radiAlfa +"\n")
-                file.write("Radiação Beta: " + radiBeta +"\n")
-                file.write("Radiação Gama: " + radiGama +"\n")
+                file.write("Local: " + local + "\n")
+                file.write("Temperatura: " + temperatura + "\n")
+                file.write("Radiação Alfa: " + radiAlfa + "\n")
+                file.write("Radiação Beta: " + radiBeta + "\n")
+                file.write("Radiação Gama: " + radiGama + "\n")
             print(f"Os dados foram salvos em {filename}!")
         except Exception as e:
             print(f"Erro ao coletar os dados da sonda: {e}")
