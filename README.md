@@ -9,7 +9,8 @@ RA = 1134141
     <title>Boas Vindas</title>
 </head>
 <body>
-    <h1>Seja bem vindo!</h1>
     <p>Seja bem-vindo(a) ao SPACE TRANSMITTER! Esperamos que tenha uma experiência agradável!</p>
+    <h1>Nesse código utilizei os conhecimentos que aprendi em aula, que foram sobre criptografia, onde no programa o usuario pode gerar chaves privadas e publicas, assinatura e verificar ela em um servidor local ou qualquer outro servidor</h1>
+    
 </body>
 </html>
