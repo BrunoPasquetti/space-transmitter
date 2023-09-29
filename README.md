@@ -11,7 +11,5 @@ RA = 1134141
 <body>
     <h1>Seja bem vindo!</h1>
     <p>Seja bem-vindo(a) ao SPACE TRANSMITTER! Esperamos que tenha uma experiência agradável!</p>
-
 </body>
-
 </html>
