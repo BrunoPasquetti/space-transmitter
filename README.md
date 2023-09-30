@@ -6,9 +6,17 @@ RA = 1134141
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <h1><p>Seja bem-vindo(a) ao SPACE TRANSMITTER! Esperamos que tenha uma experiência agradável!</p></h1>
-    <h3>Nesse código utilizei os conhecimentos que aprendi em aula, que foram sobre criptografia, onde no programa o usuario pode gerar chaves privadas e publicas, assinatura e verificar ela em um servidor local ou qualquer outro servidor (contendo algumas modificações) com extrema segurança.</h3>
+    <title>SPACE TRANSMITTER</title>
+
+<h1>Seja bem-vindo(a) ao SPACE TRANSMITTER!</h1>
+<p>Esperamos que tenha uma experiência agradável!</p>
+<h2>Sobre o programa</h2>
+<p>Neste código, utilizei os conhecimentos que aprendi em aula sobre criptografia. Com o programa, o usuário pode gerar chaves privadas e públicas, criar assinaturas e verificar essas assinaturas em um servidor local ou em qualquer outro servidor (com algumas modificações), garantindo extrema segurança.</p>
+<h3>Planos futuros</h3>
+<p>Pretendo fazer mudanças no código para aperfeiçoá-lo, como traduzi-lo para a língua inglesa e automatizar o início do servidor, permitindo que o usuário simplesmente aceite e ele seja iniciado automaticamente.</p>
+<h2>Requisitos</h2>
+<p>O usuário deve baixar a biblioteca RSA. Instale-a usando o seguinte comando: <code>pip install rsa</code></p>
 </body>
 </html>
+
+
