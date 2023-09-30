@@ -6,7 +6,6 @@ RA = 1134141
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPACE TRANSMITTER</title>
 
 <h1>Seja bem-vindo(a) ao SPACE TRANSMITTER!</h1>
 <p>Esperamos que tenha uma experiência agradável!</p>
