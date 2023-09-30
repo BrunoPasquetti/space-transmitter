@@ -3,10 +3,23 @@ import os
 import rsa 
 import datetime
 import time 
+from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
 
 def file_open_binary (file):
     with open(file, "rb") as key_file:
         return key_file.read()
+
+def write_encrypted_data(filename, data, key):
+    cipher = AES.new(key, AES.MODE_EAX)
+    ciphertext, tag = cipher.encrypt_and_digest(data.encode())
+
+    # Vamos salvar o nonce junto com o texto cifrado
+    with open(filename, 'wb') as f_enc:
+        for x in (cipher.nonce, ciphertext, tag):
+            f_enc.write(x)
+
+    print(f"Os dados foram criptografados e salvos em {filename}")
 
 listaArquivos = []
 
@@ -34,6 +47,7 @@ while True :
                     key_file.write(pubkey.save_pkcs1("PEM"))
                 with open("private.pem", "wb") as key_file:
                     key_file.write(privkey.save_pkcs1("PEM"))
+                print("Chaves Criadas!")
             except Exception as e:
                 print(f"Erro ao cadastrar a sonda e gerar o par de chaves: {e}")
 
@@ -53,30 +67,32 @@ while True :
                 except Exception as e:
                     print(f"Erro ao coletar dados da sonda")
 
+
         if opcao == 3:
             try:
                 now = datetime.datetime.now()
-                data_formatada = now.strftime("%d.%m") #formatação para dia e mês
+                data_formatada = now.strftime("%d.%m")
 
                 local = input("Digite local: ")
                 temperatura = input("DIgite a temperatura: ")
                 radiAlfa = input("Digite a radiação Alfa: ")
-                radiBeta = input("Digite a radição Beta: ")
+                radiBeta = input("Digite a radiação Beta: ")
                 radiGama = input ("Digite a radiação Gama: ")
-                
-                filename = f"{local}{data_formatada}.txt" #construindo o nome do arquivo
 
+                filename = f"{local}{data_formatada}.txt"  # Note que não há extensão .txt ou .enc aqui
+
+                data = (
+                    "Data: " + data_formatada + "\n"
+                    "Local: " + local + "\n"
+                    "Temperatura: " + temperatura + "\n"
+                    "Radiação Alfa: " + radiAlfa + "\n"
+                    "Radiação Beta: " + radiBeta + "\n"
+                    "Radiação Gama: " + radiGama
+                )
+                key = get_random_bytes(16)
+                write_encrypted_data(filename, data, key)
                 listaArquivos.append(filename)
                 print("Arquivos até agora: ", listaArquivos)
-
-                with open (filename, "w") as file:
-                    file.write("Data: " + data_formatada + "\n")
-                    file.write("Local: " + local + "\n")
-                    file.write("Temperatura: " + temperatura + "\n")
-                    file.write("Radiação Alfa: " + radiAlfa + "\n")
-                    file.write("Radiação Beta: " + radiBeta + "\n")
-                    file.write("Radiação Gama: " + radiGama + "\n")
-                print(f"Os dados foram salvos em {filename}!")
             except Exception as e:
                 print(f"Erro ao coletar os dados da sonda: {e}")
 
